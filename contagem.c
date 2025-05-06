@@ -89,7 +89,7 @@ arvore* inserir_arvore (arvore* raiz, int valor){
 int buscar_arvore (arvore* raiz, int valor, int* comparacoes){
     
     *comparacoes = 0;
-    //ver se usar recursão não é melhor
+    
     
     while (raiz != NULL){
         (*comparacoes)++;
