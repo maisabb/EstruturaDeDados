@@ -2,17 +2,16 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define TAMANHO_DADOS 1000
-#define NUM_BUSCAS 100
+#define TAMANHO_DADOS 10000
+#define NUM_BUSCAS 1000
 
-//////////Lista////////
 
 typedef struct no {
     int item;
     struct no* prox;
 } no;
 
-// Função para criar novo nó
+
 no* criar_no_lista(int valor) {
     no* novo_no = (no*)malloc(sizeof(no));
     novo_no->item = valor;
@@ -20,7 +19,7 @@ no* criar_no_lista(int valor) {
     return novo_no;
 }
 
-// Inserir no final da lista
+
 void inserir_lista(no** head, int valor) {
     no* novo_no = criar_no_lista(valor);
     if (*head == NULL) {
@@ -33,17 +32,17 @@ void inserir_lista(no** head, int valor) {
         temp->prox = novo_no;
 }
 
-// Buscar valor na lista contando comparações
+
 int buscar_lista(no* head, int valor, int* comparacoes) {
     *comparacoes = 0;
     no* temp = head;
     while (temp != NULL) {
         (*comparacoes)++;
         if (temp->item == valor)
-            return 1; // Encontrou
+            return 1; 
         temp = temp->prox;
     }
-    return 0; // Não encontrou
+    return 0;
 }
 
 
@@ -56,11 +55,7 @@ void liberar_lista(no* head) {
     }
 }
 
-///////Fim Lista ///////
-
-
-
-//Arvore///////
+/////
 
 typedef struct arvore {
     int item;
@@ -90,7 +85,6 @@ int buscar_arvore (arvore* raiz, int valor, int* comparacoes){
     
     *comparacoes = 0;
     
-    
     while (raiz != NULL){
         (*comparacoes)++;
         if (valor == raiz->item){
@@ -114,8 +108,6 @@ void liberar_arvore(arvore* raiz) {
         free(raiz);
     }
 }
-
-//////Fim Arvore///////
 
 
 int main()
@@ -142,7 +134,7 @@ int main()
     fprintf(arquivo, "numero_sorteado,comparacoes_abb,comparacoes_lista\n");
     
     for (int i = 0; i < NUM_BUSCAS; i++) {
-        sorteado = rand() % (TAMANHO_DADOS * 2);
+        sorteado = dados[rand() % 10000];
         int comparacoes_abb = 0;
         int comparacoes_lista = 0;
 
